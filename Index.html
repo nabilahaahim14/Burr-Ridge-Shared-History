@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commemorative Landmarks of Burr Ridge</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+
+        .landmark-card:hover {
+            transform: translateY(-4px);
+            transition: all 0.3s ease;
+        }
+
+        .scroll-hide::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .active-tab {
+            border-bottom: 3px solid #1e40af;
+            color: #1e40af;
+        }
+
+        .placeholder-img {
+            background: linear-gradient(45deg, #e2e8f0 25%, #f1f5f9 25%, #f1f5f9 50%, #e2e8f0 50%, #e2e8f0 75%, #f1f5f9 75%, #f1f5f9 100%);
+            background-size: 40px 40px;
+        }
+    </style>
+</head>
+<body class="text-slate-800">
+
+    <!-- Navigation Header -->
+    <header class="bg-white border-b sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-800"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <h1 class="font-bold text-lg tracking-tight">Village of Burr Ridge <span class="font-normal text-slate-500">| History & Landmarks</span></h1>
+            </div>
+            <div class="hidden md:flex gap-6 text-sm font-medium">
+                <a href="#" class="hover:text-blue-800">Parks</a>
+                <a href="#" class="hover:text-blue-800">Monuments</a>
+                <a href="#" class="hover:text-blue-800">About</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-8">
+        
+        <!-- Hero Section -->
+        <section class="mb-12">
+            <div class="bg-blue-900 text-white rounded-2xl p-8 md:p-12 relative overflow-hidden shadow-xl">
+                <div class="relative z-10 max-w-2xl">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Preserving Our Local Legacy</h2>
+                    <p class="text-blue-100 text-lg mb-6">Explore the stories behind our most significant landmarks—from the Potawatomi camps and early pioneers to the invention of the Dove Bar.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <button onclick="scrollToContent()" class="bg-white text-blue-900 px-6 py-2.5 rounded-lg font-semibold hover:bg-blue-50 transition shadow-md">Explore Landmarks</button>
+                        <button onclick="openSuggestModal()" class="bg-blue-700 text-white border border-blue-500 px-6 py-2.5 rounded-lg font-semibold hover:bg-blue-600 transition">Suggest a Location</button>
+                    </div>
+                </div>
+                <!-- Abstract Map Pattern Background -->
+                <svg class="absolute right-0 top-0 h-full w-1/2 opacity-10 pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="none">
+                    <path d="M0 0 L100 0 L100 100 L0 100 Z" fill="currentColor"/>
+                    <circle cx="20" cy="20" r="2" fill="white"/>
+                    <circle cx="50" cy="40" r="2" fill="white"/>
+                    <circle cx="80" cy="30" r="2" fill="white"/>
+                    <circle cx="30" cy="70" r="2" fill="white"/>
+                    <circle cx="70" cy="80" r="2" fill="white"/>
+                </svg>
+            </div>
+        </section>
+
+        <!-- Search & Filter Bar -->
+        <div id="explore" class="mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div class="relative flex-1 max-w-md">
+                <input type="text" id="searchInput" placeholder="Search landmarks, names, or keywords..." class="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition shadow-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute left-3 top-3.5 text-slate-400"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            </div>
+            <div class="flex gap-2 bg-white p-1 rounded-xl shadow-sm border border-slate-100">
+                <button onclick="filterType('all')" id="filter-all" class="px-4 py-2 rounded-lg text-sm font-medium transition active-tab">All</button>
+                <button onclick="filterType('Parks')" id="filter-Parks" class="px-4 py-2 rounded-lg text-sm font-medium text-slate-500 hover:bg-slate-50 transition">Parks</button>
+                <button onclick="filterType('Monuments')" id="filter-Monuments" class="px-4 py-2 rounded-lg text-sm font-medium text-slate-500 hover:bg-slate-50 transition">Monuments</button>
+                <button onclick="filterType('History')" id="filter-History" class="px-4 py-2 rounded-lg text-sm font-medium text-slate-500 hover:bg-slate-50 transition">History</button>
+            </div>
+        </div>
+
+        <!-- Landmarks Grid -->
+        <div id="landmarksGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Dynamic Content Injected Here -->
+        </div>
+
+        <!-- Suggestion CTA -->
+        <section class="mt-16 bg-slate-100 rounded-2xl p-8 text-center">
+            <h3 class="text-2xl font-bold mb-2">Did we miss a local story?</h3>
+            <p class="text-slate-600 mb-6 max-w-xl mx-auto">Our history is a community effort. If you know the story behind a local street name, marker, or monument, please share it with us.</p>
+            <button onclick="openSuggestModal()" class="bg-blue-800 text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-900 transition shadow-lg">Submit a Story</button>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t mt-20 py-12">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
+            <p class="text-slate-500 text-sm">© 2026 Village of Burr Ridge, Illinois. All rights reserved.</p>
+            <div class="flex gap-4">
+                <a href="#" class="text-slate-400 hover:text-blue-800 transition"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+                <a href="#" class="text-slate-400 hover:text-blue-800 transition"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Detail Modal -->
+    <div id="detailModal" class="fixed inset-0 bg-black/60 z-[60] flex items-center justify-center p-4 hidden backdrop-blur-sm">
+        <div class="bg-white rounded-3xl w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-2xl scale-95 transition-transform">
+            <div class="relative h-72 bg-slate-200">
+                <div id="modalImageContainer" class="w-full h-full object-cover flex items-center justify-center text-slate-400 placeholder-img">
+                    <!-- Image or Icon Placeholder -->
+                </div>
+                <button onclick="closeModal()" class="absolute top-4 right-4 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                </button>
+            </div>
+            <div class="p-8">
+                <div class="flex items-center gap-2 mb-2">
+                    <span id="modalType" class="text-xs font-bold uppercase tracking-widest text-blue-600 bg-blue-50 px-2 py-1 rounded">CATEGORY</span>
+                </div>
+                <h2 id="modalTitle" class="text-3xl font-bold mb-4">Title</h2>
+                <div class="prose prose-slate max-w-none">
+                    <p id="modalDescription" class="text-slate-600 leading-relaxed text-lg whitespace-pre-wrap"></p>
+                </div>
+                <hr class="my-8 border-slate-100">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div class="flex items-center gap-3 text-slate-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        <span id="modalDate" class="text-sm">Fact-Checked Record</span>
+                    </div>
+                    <button class="bg-blue-800 text-white px-5 py-2 rounded-lg font-semibold hover:bg-blue-900 transition text-sm flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                        View Details
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Suggestion Modal -->
+    <div id="suggestModal" class="fixed inset-0 bg-black/60 z-[60] flex items-center justify-center p-4 hidden backdrop-blur-sm">
+        <div class="bg-white rounded-2xl w-full max-w-md shadow-2xl p-8">
+            <div class="flex justify-between items-start mb-6">
+                <div>
+                    <h2 class="text-2xl font-bold">Suggest a Landmark</h2>
+                    <p class="text-slate-500 text-sm">Contribute to the Burr Ridge archive.</p>
+                </div>
+                <button onclick="closeSuggestModal()" class="text-slate-400 hover:text-slate-600 transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                </button>
+            </div>
+            <form id="suggestForm" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-semibold mb-1">Landmark or Location Name</label>
+                    <input type="text" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold mb-1">The Story / Historical Context</label>
+                    <textarea rows="4" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none" placeholder="Who is it named after? Why is it important?"></textarea>
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold mb-1">Upload Photo (Optional URL)</label>
+                    <input type="text" placeholder="Link to an image if available..." class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+                </div>
+                <button type="submit" class="w-full bg-blue-800 text-white py-3 rounded-lg font-bold hover:bg-blue-900 transition">Submit to Historical Society</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // FACT-CHECKED LANDMARKS DATA
+        const landmarks = [
+            {
+                id: 1,
+                title: "Potawatomi Last Camp Site",
+                type: "History",
+                short: "Marking the 1835 Potawatomi camp site at Wolf & Plainfield.",
+                description: "The area that is now Burr Ridge was originally inhabited by the Potawatomi people, who called the region 'Tioga' (meaning 'peaceful valley'). A granite boulder historical marker at the northwest corner of Wolf and Plainfield Roads marks the 'Last Camp Site of the Potawatomie Indians in Cook County, 1835.' Erected by the DAR on May 15, 1930, it remains one of the oldest commemorative markers in our community.",
+                date: "Erected: May 15, 1930",
+                color: "bg-amber-100",
+                imgUrl: "", 
+                icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 18a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2"/><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M7 21h10"/></svg>`
+            },
+            {
+                id: 2,
+                title: "Joseph Vial Log Cabin Site",
+                type: "History",
+                short: "The site of Burr Ridge's first post office and hotel (1834).",
+                description: "In 1834, Joseph Vial erected a log cabin near Wolf and Plainfield Roads. He served as the area's first postmaster and operated a hotel on the stagecoach line. The Vial family was instrumental in local politics and the founding of the Lyonsville Congregational Church. Remarkably, the first Democratic convention in Cook County was held here in 1835.",
+                date: "Established: 1834",
+                color: "bg-stone-200",
+                imgUrl: "", 
+                icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#44403c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>`
+            },
+            {
+                id: 3,
+                title: "Robert Vial House",
+                type: "History",
+                short: "The oldest standing building in Burr Ridge (1856).",
+                description: "Built in 1856, the Robert Vial House is a Greek Revival farmhouse with Italianate elements. It represents the community's early agricultural success; Robert Vial's farm even featured the first silo constructed in Cook County. In 1989, the Flagg Creek Heritage Society moved the house to its current site on Wolf Road to restore it as a local history museum.",
+                date: "Built: 1856 / Relocated: 1989",
+                color: "bg-emerald-50",
+                imgUrl: "", 
+                icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#065f46" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M3 10l9-7 9 7v11H3z"/><path d="M9 21V12h6v9"/></svg>`
+            },
+            {
+                id: 4,
+                title: "Flagg Creek Heritage Museum",
+                type: "History",
+                short: "Preserving local history and the story of 'Tiedtville.'",
+                description: "Located on Pleasant Dale Park District grounds, the museum operates alongside the Robert Vial House. A key focus is the unincorporated town of 'Tiedtville,' which grew from a single tavern into a town with its own post office, butcher shop, and even a jail. The museum serves as the primary repository for Burr Ridge's physical artifacts.",
+                date: "Society Established: 1976",
+                color: "bg-indigo-100",
+                imgUrl: "", 
+                icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#3730a3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 22h20"/><path d="M4 18v-8H2l10-8 10 8h-2v8"/><path d="M8 18v-5h8v5"/><path d="M12 13v5"/></svg>`
+            },
+            {
+                id: 5,
+                title: "Hiram McClintock Civil War Letters",
+                type: "History",
+                short: "Personal records of a Burr Ridge schoolteacher in the Civil War.",
+                description: "Hiram McClintock was a schoolteacher at 'Skunk Corners' who was born on a farm on what is now County Line Road. He served in the 127th Illinois Regiment and lost his life in the Civil War. The Flagg Creek Heritage Society preserves his collection of letters, which offer a poignant look at life during the war, including correspondence with his student Sarah North.",
+                date: "War Service: 1861-1865",
+                color: "bg-slate-100",
+                imgUrl: "", 
+                icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#334155" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>`
+            },
+            {
+                id: 6,
+                title: "Harvester Park / IH Farm",
+                type: "Parks",
+                short: "Site of the world's first all-purpose tractor testing.",
+                description: "In 1917, International Harvester purchased 414 acres here for an experimental farm to test the 'Farmall' tractor. The village was so proud of this agricultural innovation that it was originally named 'Harvester' when it incorporated in 1956. Today, the park is a tribute to this legacy of local invention and agricultural science.",
+                date: "Established: 1917 / Park: 1980s",
+                color: "bg-emerald-100",
+                imgUrl: "", 
+                icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M5 17h14v-5l-5-5H5v10Z"/><path d="M10 7v5"/></svg>`
+            },
+            {
+                id: 7,
+                title: "The Bridewell Prison Farm",
+                type: "History",
+                short: "A self-sufficient jail farm that shaped our Village Center.",
+                description: "From 1917 to 1969, the Cook County Prison Farm (The Bridewell) operated on land that now includes the Ambriance subdivision. Inmates produced dairy and crops for the county jail. After closing in 1969, the land's transition to residential use was a turning point for Burr Ridge, eventually becoming a site for high-end gated communities and the Village Center.",
+                date: "Operated: 1917-1969",
+                color: "bg-red-50",
+                imgUrl: "", 
+                icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#991b1b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/><path d="M15 3v18"/><path d="M3 9h18"/><path d="M3 15h18"/></svg>`
+            },
+            {
+                id: 8,
+                title: "Highland Fields / Busby Farm",
+                type: "History",
+                short: "The dairy farm that gave Burr Ridge its name.",
+                description: "In the 1940s, Denver Busby established the 190-acre Burr Ridge Dairy Farm. Busby launched 'Burr Ridge Estates' with 5-acre lots, establishing the village's identity as a luxury residential community. His dairy farm name was adopted by the village upon incorporation, directly linking our modern name to his pastoral vision.",
+                date: "Heritage: 1940s",
+                color: "bg-orange-100",
+                imgUrl: "", 
+                icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>`
+            },
+            {
+                id: 9,
+                title: "Schustek Pond",
+                type: "Monuments",
+                short: "The heroic story of the 'Parachute Martyr' (1930).",
+                description: "On July 6, 1930, pilot Bruno Schustek died a hero while trying to rescue heiress Mary Fahrney, whose parachute had become entangled in his plane's wing. Schustek climbed onto the wing 1,000 feet in the air to free her, but tragically fell to his death. Fahrney survived. The pond near Veterans Blvd was officially named in his honor in 2015 on the 85th anniversary of the incident.",
+                date: "Incident: July 6, 1930 / Named: 2015",
+                color: "bg-blue-100",
+                imgUrl: "", 
+                icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>`
+            },
+            {
+                id: 10,
+                title: "Burr Ridge Veterans Memorial",
+                type: "Monuments",
+                short: "Honoring service members and Medal of Honor recipient Lester Weber.",
+                description: "Dedicated in 2010, this memorial features five walls representing the branches of the military and a 'Fallen Soldier' sculpture. It specifically honors local hero Lester W. Weber, a Burr Ridge Medal of Honor recipient from the Vietnam War. Over 700 engraved bricks and a gold dome make this one of the most prominent landmarks in the village.",
+                date: "Opened: June 2010",
+                color: "bg-red-100",
+                imgUrl: "", 
+                icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#b91c1c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2h-4v7h4V2Z"/><path d="M10 2H6v7h4V2Z"/><circle cx="12" cy="12" r="3"/></svg>`
+            },
+            {
+                id: 11,
+                title: "The Dove Bar Factory",
+                type: "History",
+                short: "A sweet piece of local pride manufactured in Burr Ridge.",
+                description: "The world-famous Dove Bar ice cream treat has deep ties to the community. Originally invented in 1956 by Leo Stefanos at a candy shop in Chicago, the massive popularity of the treat led to a large manufacturing presence right here in Burr Ridge. It remains a point of local pride for residents who remember the bars being made in their own backyard.",
+                date: "Established: 1950s-1980s",
+                color: "bg-amber-50",
+                imgUrl: "", 
+                icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#92400e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v16"/><path d="M7 22h10"/><path d="M12 18v4"/><path d="M8 2h8a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V6a4 4 0 0 1 4-4Z"/></svg>`
+            },
+            {
+                id: 12,
+                title: "The Origin of 'Burr Ridge'",
+                type: "History",
+                short: "Named for the bur oak trees and glacial ridges.",
+                description: "The name 'Burr Ridge' was officially adopted due to the bur oak trees that grew along the high ridges of the community. These rolling hills were carved by glaciers during the last ice age, leaving the village situated primarily on the Valparaiso Moraine. The name reflects our unique natural landscape and the ancient environmental forces that shaped our land.",
+                date: "Village Renamed: 1962",
+                color: "bg-emerald-50",
+                imgUrl: "", 
+                icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#065f46" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-8-4.5-8-11.8c0-3.4 2.1-5.2 4-5.2s4 1.8 4 5.2c0 3.4 2.1 5.2 4 5.2s4-1.8 4-5.2C20 8.2 12 20 12 20Z"/><path d="M12 20v2"/></svg>`
+            }
+        ];
+
+        let currentFilter = 'all';
+
+        // Render Functions
+        function renderLandmarks(data) {
+            const grid = document.getElementById('landmarksGrid');
+            grid.innerHTML = '';
+            
+            data.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'landmark-card bg-white rounded-2xl p-6 shadow-sm border border-slate-100 cursor-pointer fade-in flex flex-col h-full';
+                card.onclick = () => openModal(item);
+                
+                const hasImage = item.imgUrl && item.imgUrl.trim() !== "";
+                const imgSection = hasImage 
+                    ? `<img src="${item.imgUrl}" class="w-full h-32 object-cover rounded-xl mb-4">`
+                    : `<div class="w-14 h-14 ${item.color} rounded-xl flex items-center justify-center mb-6">${item.icon}</div>`;
+
+                card.innerHTML = `
+                    ${imgSection}
+                    <span class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2 block">${item.type}</span>
+                    <h3 class="text-xl font-bold mb-2 group-hover:text-blue-800 transition">${item.title}</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed mb-6 flex-grow line-clamp-3">${item.short}</p>
+                    <div class="flex items-center text-blue-800 text-sm font-semibold gap-1 mt-auto">
+                        Read Story 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+
+            if(data.length === 0) {
+                grid.innerHTML = `<div class="col-span-full py-20 text-center text-slate-400">No landmarks found matching your search.</div>`;
+            }
+        }
+
+        // Filtering & Search
+        function filterType(type) {
+            currentFilter = type;
+            
+            document.querySelectorAll('[id^="filter-"]').forEach(btn => {
+                btn.classList.remove('active-tab', 'text-blue-800');
+                btn.classList.add('text-slate-500');
+            });
+            const activeBtn = document.getElementById(`filter-${type}`);
+            activeBtn.classList.add('active-tab', 'text-blue-800');
+            activeBtn.classList.remove('text-slate-500');
+
+            applyFilters();
+        }
+
+        document.getElementById('searchInput').oninput = applyFilters;
+
+        function applyFilters() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = landmarks.filter(item => {
+                const matchesType = currentFilter === 'all' || item.type === currentFilter;
+                const matchesSearch = item.title.toLowerCase().includes(query) || 
+                                     item.description.toLowerCase().includes(query) ||
+                                     item.short.toLowerCase().includes(query);
+                return matchesType && matchesSearch;
+            });
+            renderLandmarks(filtered);
+        }
+
+        // Modal Logic
+        function openModal(item) {
+            const modal = document.getElementById('detailModal');
+            const imgContainer = document.getElementById('modalImageContainer');
+            
+            document.getElementById('modalTitle').innerText = item.title;
+            document.getElementById('modalType').innerText = item.type;
+            document.getElementById('modalDescription').innerText = item.description;
+            document.getElementById('modalDate').innerText = item.date;
+
+            // Handle Image vs Icon in Modal
+            if(item.imgUrl && item.imgUrl.trim() !== "") {
+                imgContainer.innerHTML = `<img src="${item.imgUrl}" class="w-full h-full object-cover">`;
+                imgContainer.classList.remove('placeholder-img');
+            } else {
+                imgContainer.innerHTML = item.icon.replace('width="48"', 'width="96"').replace('height="48"', 'height="96"');
+                imgContainer.classList.add('placeholder-img');
+            }
+            
+            modal.classList.remove('hidden');
+            modal.children[0].classList.add('scale-100');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('detailModal');
+            modal.children[0].classList.remove('scale-100');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function openSuggestModal() {
+            document.getElementById('suggestModal').classList.remove('hidden');
+        }
+
+        function closeSuggestModal() {
+            document.getElementById('suggestModal').classList.add('hidden');
+        }
+
+        function scrollToContent() {
+            const exploreSection = document.getElementById('explore');
+            window.scrollTo({ top: exploreSection.offsetTop - 100, behavior: 'smooth' });
+        }
+
+        // Mock Submission
+        document.getElementById('suggestForm').onsubmit = (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            btn.innerText = "Story Submitted!";
+            btn.classList.replace('bg-blue-800', 'bg-green-600');
+            setTimeout(() => {
+                closeSuggestModal();
+                btn.innerText = "Submit to Historical Society";
+                btn.classList.replace('bg-green-600', 'bg-blue-800');
+                e.target.reset();
+            }, 2000);
+        };
+
+        window.onclick = function(event) {
+            const dModal = document.getElementById('detailModal');
+            const sModal = document.getElementById('suggestModal');
+            if (event.target == dModal) closeModal();
+            if (event.target == sModal) closeSuggestModal();
+        }
+
+        renderLandmarks(landmarks);
+    </script>
+</body>
+</html>
