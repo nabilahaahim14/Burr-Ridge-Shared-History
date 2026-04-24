@@ -97,6 +97,15 @@ st.markdown("""
             color: #475569;
             margin-bottom: 1.5rem;
         }
+        
+        .modal-container {
+            background-color: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.1);
+        }
     </style>
 """, unsafe_allow_html=True)
 
@@ -226,6 +235,37 @@ if "search_query" not in st.session_state:
 st.markdown("# 📍 Village of Burr Ridge | History & Landmarks")
 st.caption("Explore the stories behind our most significant commemorative sites")
 
+# DETAIL MODAL - DISPLAY AT TOP
+if st.session_state.selected_landmark:
+    landmark = st.session_state.selected_landmark
+    
+    with st.container():
+        st.markdown('<div class="modal-container">', unsafe_allow_html=True)
+        
+        col1, col2 = st.columns([10, 1])
+        with col2:
+            if st.button("✕ Close", key="close_modal"):
+                st.session_state.selected_landmark = None
+                st.rerun()
+        
+        st.markdown(f"<div class='category-badge'>{landmark['type']}</div>", unsafe_allow_html=True)
+        st.markdown(f"## {landmark['title']}")
+        
+        st.markdown("---")
+        st.write(landmark["description"])
+        
+        st.markdown("---")
+        col1, col2 = st.columns([2, 1])
+        with col1:
+            st.caption(f"🕐 {landmark['date']}")
+        with col2:
+            if st.button("View on Map", use_container_width=True):
+                st.info("🗺️ Map integration coming soon!")
+        
+        st.markdown('</div>', unsafe_allow_html=True)
+    
+    st.markdown("---")
+
 # Hero Section
 st.markdown("""
     <div class="hero-section">
@@ -287,31 +327,6 @@ if filtered_landmarks:
 else:
     st.info("📭 No landmarks found matching your search.")
 
-# Detail Modal
-if st.session_state.selected_landmark:
-    landmark = st.session_state.selected_landmark
-    
-    st.markdown("---")
-    col1, col2 = st.columns([10, 1])
-    with col2:
-        if st.button("✕", key="close_modal"):
-            st.session_state.selected_landmark = None
-            st.rerun()
-    
-    st.markdown(f"<div class='category-badge'>{landmark['type']}</div>", unsafe_allow_html=True)
-    st.markdown(f"## {landmark['title']}")
-    
-    st.markdown("---")
-    st.write(landmark["description"])
-    
-    st.markdown("---")
-    col1, col2 = st.columns([2, 1])
-    with col1:
-        st.caption(f"🕐 {landmark['date']}")
-    with col2:
-        if st.button("View on Map", use_container_width=True):
-            st.info("🗺️ Map integration coming soon!")
-
 # Suggestion CTA Section
 st.markdown("---")
 st.markdown("""
@@ -330,29 +345,42 @@ with col2:
 # Suggestion Form Modal
 if st.session_state.show_suggest_modal:
     st.markdown("---")
-    st.markdown("## 📝 Suggest a Landmark")
-    st.caption("Contribute to the Burr Ridge archive.")
     
-    with st.form("suggest_form"):
-        landmark_name = st.text_input("Landmark or Location Name *", placeholder="Enter the name...")
-        story = st.text_area("The Story / Historical Context *", placeholder="Who is it named after? Why is it important?", height=150)
-        photo_url = st.text_input("Upload Photo (Optional URL)", placeholder="Link to an image if available...")
+    with st.container():
+        st.markdown('<div class="modal-container">', unsafe_allow_html=True)
         
-        col1, col2 = st.columns([1, 1])
-        with col1:
-            submitted = st.form_submit_button("Submit to Historical Society", use_container_width=True)
+        col1, col2 = st.columns([10, 1])
         with col2:
-            if st.form_submit_button("Cancel", use_container_width=True):
+            if st.button("✕ Close", key="close_suggest"):
                 st.session_state.show_suggest_modal = False
                 st.rerun()
         
-        if submitted:
-            if landmark_name and story:
-                st.success("✅ Thank you! Your submission has been received.")
-                st.session_state.show_suggest_modal = False
-                st.balloons()
-            else:
-                st.error("Please fill in all required fields marked with *")
+        st.markdown("## 📝 Suggest a Landmark")
+        st.caption("Contribute to the Burr Ridge archive.")
+        
+        with st.form("suggest_form"):
+            landmark_name = st.text_input("Landmark or Location Name *", placeholder="Enter the name...")
+            story = st.text_area("The Story / Historical Context *", placeholder="Who is it named after? Why is it important?", height=150)
+            photo_url = st.text_input("Upload Photo (Optional URL)", placeholder="Link to an image if available...")
+            
+            col1, col2 = st.columns([1, 1])
+            with col1:
+                submitted = st.form_submit_button("Submit to Historical Society", use_container_width=True)
+            with col2:
+                if st.form_submit_button("Cancel", use_container_width=True):
+                    st.session_state.show_suggest_modal = False
+                    st.rerun()
+            
+            if submitted:
+                if landmark_name and story:
+                    st.success("✅ Thank you! Your submission has been received.")
+                    st.session_state.show_suggest_modal = False
+                    st.balloons()
+                    st.rerun()
+                else:
+                    st.error("Please fill in all required fields marked with *")
+        
+        st.markdown('</div>', unsafe_allow_html=True)
 
 # Footer
 st.markdown("---")
