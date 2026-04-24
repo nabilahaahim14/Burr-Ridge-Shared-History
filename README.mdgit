@@ -1,19 +1,2 @@
 # Burr-Ridge-Shared-History
-initgit
-add
-README.mdgit
-commit
--m
-first commit
-git
-branch
--M
-maingit
-remote
-add
-origin
-https://github.com/nabilahaahim14/Burr-Ridge-Shared-History.gitgit
-push
--u
-origin
-main
+interactive dashboard in Canvas to include all 12 historical landmarks
