@@ -7,7 +7,7 @@ from datetime import datetime
 # Page configuration
 st.set_page_config(
     page_title="Commemorative Landmarks of Burr Ridge",
-    page_icon="📍",
+    page_icon=" ",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
@@ -417,18 +417,18 @@ def show_landmark_dialog(landmark):
     # Location card
     st.markdown(f"""
         <div class="location-card">
-            <div class="location-card-title">📍 Location</div>
+            <div class="location-card-title">Location</div>
             <div class="location-card-address">{landmark['location_text'].replace(chr(10), '<br>')}</div>
         </div>
     """, unsafe_allow_html=True)
 
     st.markdown("<br>", unsafe_allow_html=True)
-    st.link_button("🗺️ Open in Google Maps", landmark['maps_url'], use_container_width=True)
+    st.link_button("Open in Google Maps", landmark['maps_url'], use_container_width=True)
 
 # ─── Suggest Story Dialog ─────────────────────────────────────────────────────
 @st.dialog("Suggest a Landmark Story", width="large")
 def show_suggest_dialog():
-    st.markdown("#### 📝 Contribute to the Burr Ridge Archive")
+    st.markdown("#### Contribute to the Burr Ridge Archive")
     st.caption("Share a story about a local street name, marker, monument, or historical site.")
     st.markdown("<div class='divider-line'></div>", unsafe_allow_html=True)
 
@@ -446,12 +446,12 @@ def show_suggest_dialog():
             "Photo URL (optional)",
             placeholder="https://example.com/image.jpg"
         )
-        submitted = st.form_submit_button("✉️ Submit to Historical Society", use_container_width=True)
+        submitted = st.form_submit_button("✉️ Submit", use_container_width=True)
 
         if submitted:
             if landmark_name.strip() and story.strip():
                 if send_email(landmark_name, story, photo_url):
-                    st.success("✅ Thank you! Your submission has been received by the Historical Society.")
+                    st.success("✅ Thank you! Your submission has been received.")
                     st.balloons()
             else:
                 st.error("⚠️ Please fill in the required fields marked with *")
@@ -536,6 +536,6 @@ col1, col2, col3 = st.columns([2, 1, 1])
 with col1:
     st.caption("© 2026 Village of Burr Ridge, Illinois. All rights reserved.")
 with col2:
-    st.caption("[📧 Contact](mailto:history@burr-ridge.org)")
+    st.caption("[📧 Contact](mailto:nhashim@burr-ridge.gov)")
 with col3:
     st.caption("[ℹ️ About Burr Ridge](https://www.burr-ridge.org)")
