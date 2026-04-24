@@ -243,8 +243,8 @@ LANDMARKS = [
         "short": "Marking the 1835 Potawatomi camp site at Wolf & Plainfield.",
         "description": "The area that is now Burr Ridge was originally inhabited by the Potawatomi people, who called the region 'Tioga' (meaning 'peaceful valley'). A granite boulder historical marker at the northwest corner of Wolf and Plainfield Roads marks the 'Last Camp Site of the Potawatomie Indians in Cook County, 1835.' Erected by the DAR (Daughters of the American Revolution) on May 15, 1930, it remains one of the oldest commemorative markers in our community. This sacred site represents the final gathering place of the Potawatomi nation in Cook County before their forced removal during the Indian Removal Act era.",
         "date": "Erected: May 15, 1930",
-        "location_text": "NW corner of Wolf Road & Plainfield Road, Burr Ridge, IL",
-        "coordinates": (41.7580, -87.8520),
+        "location_text": "NW corner of Wolf Road & Plainfield Road\nBurr Ridge, IL 60527",
+        "maps_url": "https://www.google.com/maps/search/Wolf+Road+%26+Plainfield+Road,+Burr+Ridge,+IL+60527",
     },
     {
         "id": 2,
@@ -253,8 +253,8 @@ LANDMARKS = [
         "short": "The site of Burr Ridge's first post office and hotel (1834).",
         "description": "In 1834, Joseph Vial erected a log cabin near Wolf and Plainfield Roads, establishing what would become Burr Ridge's first center of commerce. He served as the area's first postmaster and operated a hotel on the stagecoach line, making it a crucial hub for travelers and settlers moving westward. The Vial family was instrumental in local politics and the founding of the Lyonsville Congregational Church. Remarkably, the first Democratic convention in Cook County was held here in 1835, making this humble cabin the birthplace of political organizing in our region.",
         "date": "Established: 1834",
-        "location_text": "Near Wolf Road & Plainfield Road, Burr Ridge, IL",
-        "coordinates": (41.7575, -87.8525),
+        "location_text": "Near Wolf Road & Plainfield Road\nBurr Ridge, IL 60527\n(Historical site — no marker currently standing)",
+        "maps_url": "https://www.google.com/maps/search/Wolf+Road+%26+Plainfield+Road,+Burr+Ridge,+IL+60527",
     },
     {
         "id": 3,
@@ -263,8 +263,8 @@ LANDMARKS = [
         "short": "The oldest standing building in Burr Ridge (1856).",
         "description": "Built in 1856, the Robert Vial House is a stunning example of Greek Revival architecture with Italianate elements. Robert Vial's farm was a model of 19th-century innovation — it even featured the first silo constructed in Cook County, a revolutionary agricultural advancement. In 1989, the Flagg Creek Heritage Society carefully moved and restored the house to its current site on Wolf Road as a local history museum. Visitors can tour the period-furnished rooms and learn about life in the early Burr Ridge settlement.",
         "date": "Built: 1856 / Relocated: 1989",
-        "location_text": "7385 S. Wolf Road, Burr Ridge, IL 60527\n(on Pleasant Dale Park District grounds)",
-        "coordinates": (41.7560, -87.8510),
+        "location_text": "7425 S. Wolf Road\nBurr Ridge, IL 60527\n(Pleasant Dale Park District grounds)",
+        "maps_url": "https://www.google.com/maps/search/7425+S+Wolf+Road,+Burr+Ridge,+IL+60527",
     },
     {
         "id": 4,
@@ -273,8 +273,8 @@ LANDMARKS = [
         "short": "Preserving local history and the story of 'Tiedtville.'",
         "description": "Located on Pleasant Dale Park District grounds alongside the Robert Vial House, this museum serves as the primary repository for Burr Ridge's artifacts and heritage. A key exhibit explores the fascinating unincorporated town of 'Tiedtville,' which grew from a single tavern into a community with its own post office, butcher shop, general store, bowling alley, and even a jail. Established in 1976, the Flagg Creek Heritage Society continues to gather, preserve, and share the cultural history of the region through exhibits, lectures, and community programs.",
         "date": "Society Established: 1976",
-        "location_text": "7425 S. Wolf Road, Burr Ridge, IL 60527\nOpen: 1st Sunday of each month (Apr–Oct), 2–4 PM",
-        "coordinates": (41.7545, -87.8530),
+        "location_text": "7425 S. Wolf Road\nBurr Ridge, IL 60527\nOpen: 1st Sunday (Apr–Oct), 2–4 PM · Most Mondays 10 AM–1 PM",
+        "maps_url": "https://www.google.com/maps/search/7425+S+Wolf+Road,+Burr+Ridge,+IL+60527",
     },
     {
         "id": 5,
@@ -283,8 +283,8 @@ LANDMARKS = [
         "short": "Personal records of a Burr Ridge schoolteacher in the Civil War.",
         "description": "Hiram McClintock was a dedicated schoolteacher at 'Skunk Corners' (Joliet Road & East Avenue) born on a farm on what is now County Line Road. When the Civil War broke out, he served with the 127th Illinois Regiment and gave his life for the Union cause. The Flagg Creek Heritage Society preserves his collection of letters, offering an intimate window into life during America's greatest conflict. His correspondence with former student Sarah North provides touching insight into the hopes and fears of soldiers and those waiting at home — a treasure of American local history.",
         "date": "War Service: 1861–1865",
-        "location_text": "Flagg Creek Heritage Museum, 7425 S. Wolf Road, Burr Ridge, IL",
-        "coordinates": (41.7590, -87.8490),
+        "location_text": "Flagg Creek Heritage Museum\n7425 S. Wolf Road, Burr Ridge, IL 60527\n(Letters housed in the museum collection)",
+        "maps_url": "https://www.google.com/maps/search/7425+S+Wolf+Road,+Burr+Ridge,+IL+60527",
     },
     {
         "id": 6,
@@ -292,9 +292,9 @@ LANDMARKS = [
         "type": "Parks",
         "short": "Site of the world's first all-purpose tractor testing.",
         "description": "In 1917, International Harvester purchased 414 acres here for a state-of-the-art experimental farm. This facility became the testing ground for the revolutionary 'Farmall' tractor — a machine that transformed agriculture worldwide by proving a single tractor could perform all farming tasks. The village was so proud of this legacy that it named itself 'Harvester' upon incorporation in 1956. Harvester Park stands today as a tribute to this spirit of innovation, providing recreation facilities while honoring the agricultural science revolution that once occurred on these very grounds.",
-        "date": "Farm Established: 1917 / Park: 1980s",
-        "location_text": "Harvester Park, Burr Ridge, IL\n(along Harvester Ave, off County Line Rd)",
-        "coordinates": (41.7610, -87.8580),
+        "date": "Farm Established: 1917 / Park Acquired: 1990",
+        "location_text": "15W400 Harvester Drive\nBurr Ridge, IL 60527\n📞 (630) 920-1969",
+        "maps_url": "https://www.google.com/maps/search/15W400+Harvester+Drive,+Burr+Ridge,+IL+60527",
     },
     {
         "id": 7,
@@ -303,8 +303,8 @@ LANDMARKS = [
         "short": "A self-sufficient jail farm that shaped our Village Center.",
         "description": "From 1917 to 1969, the Cook County Prison Farm — known as 'The Bridewell' — operated on land that now includes parts of the Ambriance subdivision and Village Center. This unique facility had inmates produce dairy products and crops specifically for the county jail system. After its closure in 1969, Mayor Richard J. Daley proposed building subsidized housing here, but DuPage County blocked the plan. The land was eventually transformed into high-end gated communities and commercial developments — a remarkable shift from a place of confinement to one of the most sought-after addresses in Burr Ridge.",
         "date": "Operated: 1917–1969",
-        "location_text": "Ambriance Subdivision area, Burr Ridge, IL\n(near Village Center, off Frontage Road / Route 66)",
-        "coordinates": (41.7550, -87.8600),
+        "location_text": "Ambriance Subdivision & Village Center area\nBurr Ridge, IL 60527\n(Site of former farm, now residential/commercial)",
+        "maps_url": "https://www.google.com/maps/search/Ambriance+Burr+Ridge+IL+60527",
     },
     {
         "id": 8,
@@ -312,19 +312,19 @@ LANDMARKS = [
         "type": "History",
         "short": "The dairy farm that gave Burr Ridge its name.",
         "description": "In the 1940s, Denver Busby established a 190-acre dairy farm and launched 'Burr Ridge Estates' with spacious 5-acre lots — establishing the village's identity as a luxury residential community. His farm's name was officially adopted by the village in 1962, directly linking Burr Ridge's modern name to his pastoral vision. The Busby family's entrepreneurial spirit shaped the character of Burr Ridge as an affluent suburb that valued both heritage and progress. Though the dairy operations ceased long ago, the village name permanently honors the agricultural roots of this visionary developer.",
-        "date": "Heritage: 1940s / Renamed: 1962",
-        "location_text": "Highland Fields area, Burr Ridge, IL\n(general area of current Highland Fields subdivision)",
-        "coordinates": (41.7630, -87.8470),
+        "date": "Heritage: 1940s / Village Renamed: 1962",
+        "location_text": "Highland Fields Subdivision\nBurr Ridge, IL 60527\n(Area of former Busby dairy farm, now residential)",
+        "maps_url": "https://www.google.com/maps/search/Highland+Fields,+Burr+Ridge,+IL+60527",
     },
     {
         "id": 9,
         "title": "Schustek Pond",
         "type": "Monuments",
         "short": "The heroic story of the 'Parachute Martyr' (1930).",
-        "description": "On July 6, 1930, WWI flying ace Bruno Schustek demonstrated extraordinary heroism when heiress Mary Fahrney's parachute became fatally entangled in a plane's wing at 1,000 feet above the ground. Without hesitation, Schustek climbed out onto the wing of a flying aircraft to try to free her — and tragically fell to his death. Fahrney survived. His courageous sacrifice earned him the title 'Parachute Martyr' and captured national attention. The pond on Veterans Boulevard was officially named in his honor in April 2015, with a dedication ceremony held on July 6, 2015 — exactly 85 years after his death.",
+        "description": "On July 6, 1930, WWI flying ace Bruno Schustek demonstrated extraordinary heroism when heiress Mary Fahrney's parachute became fatally entangled in a plane's wing at 1,000 feet above the ground. Without hesitation, Schustek climbed out onto the wing of a flying aircraft to try to free her — and tragically fell to his death. Fahrney survived. His courageous sacrifice earned him the title 'Parachute Martyr' and captured national attention. The pond on Veterans Boulevard was officially named in his honor in April 2015, with a dedication plaque unveiled on July 6, 2015 — exactly 85 years after his death.",
         "date": "Incident: July 6, 1930 / Named: April 2015",
-        "location_text": "Schustek Pond, Veterans Blvd., Burr Ridge, IL\n(near North American Spine Society, 7075 Veterans Blvd)",
-        "coordinates": (41.7520, -87.8650),
+        "location_text": "Schustek Pond, Veterans Blvd.\nBurr Ridge, IL 60527\n(Plaque in parking lot of 7075 Veterans Blvd)",
+        "maps_url": "https://www.google.com/maps/search/7075+Veterans+Blvd,+Burr+Ridge,+IL+60527",
     },
     {
         "id": 10,
@@ -333,8 +333,8 @@ LANDMARKS = [
         "short": "Honoring service members and Medal of Honor recipient Lester Weber.",
         "description": "Dedicated in June 2010, this memorial features five stone-clad walls representing each branch of the military, a bronze 'Fallen Soldier' sculpture at center, and a six-foot bronze eagle. Over 700 engraved bricks bear the names of veterans with ties to our community. The memorial specifically honors Lester W. Weber, a Burr Ridge native who earned the Medal of Honor for extraordinary heroism during the Vietnam War. It took a dedicated committee of local veterans nine years to raise the over $300,000 needed to build it — a testament to community commitment to honoring those who served.",
         "date": "Opened: June 2010",
-        "location_text": "7660 County Line Road, Burr Ridge, IL 60527\n(adjacent to Burr Ridge Village Hall)",
-        "coordinates": (41.7570, -87.8540),
+        "location_text": "7660 County Line Road\nBurr Ridge, IL 60527\n(Adjacent to Burr Ridge Village Hall, at County Line Rd & 77th St)",
+        "maps_url": "https://www.google.com/maps/search/7660+County+Line+Road,+Burr+Ridge,+IL+60527",
     },
     {
         "id": 11,
@@ -343,8 +343,8 @@ LANDMARKS = [
         "short": "A sweet piece of local pride manufactured in Burr Ridge.",
         "description": "The world-famous Dove Bar ice cream treat has deep ties to Burr Ridge's community heritage. Originally invented in 1956 by Leo Stefanos at a small Chicago candy shop, the Dove Bar became a beloved American dessert — a premium ice cream bar enrobed in rich chocolate. Its massive popularity led to large-scale manufacturing operations right here in Burr Ridge, making the village an important production hub throughout the 1950s–1980s. For generations of residents, the aroma of the Dove Bar factory was a part of everyday community life, and it remains a cherished point of local nostalgia.",
         "date": "Established: 1950s–1980s",
-        "location_text": "Former factory site, Burr Ridge, IL\n(site now redeveloped; exact address varies by source)",
-        "coordinates": (41.7600, -87.8560),
+        "location_text": "Former factory site, Burr Ridge, IL 60527\n(Site has since been redeveloped)",
+        "maps_url": "https://www.google.com/maps/search/Burr+Ridge,+IL+60527",
     },
     {
         "id": 12,
@@ -353,8 +353,8 @@ LANDMARKS = [
         "short": "Named for the bur oak trees and glacial ridges.",
         "description": "The name 'Burr Ridge' honors the bur oak trees that once grew abundantly along the high ridges defining our landscape. These rolling hills were carved by glaciers during the last ice age, leaving behind the Valparaiso Moraine — the geological formation that gives Burr Ridge its distinctive rolling character. Originally incorporated as 'Harvester' in 1956, the village was officially renamed 'Burr Ridge' in 1962 when the International Harvester estates and the Busby Burr Ridge Estates merged. The name is a poetic reminder that we are stewards of a landscape shaped by thousands of years of natural history.",
         "date": "Village Renamed: 1962",
-        "location_text": "Village of Burr Ridge, Cook & DuPage Counties, IL\n(The Valparaiso Moraine runs throughout the village)",
-        "coordinates": (41.7570, -87.8500),
+        "location_text": "Village of Burr Ridge\nCook & DuPage Counties, IL 60527\n(Valparaiso Moraine runs throughout the village)",
+        "maps_url": "https://www.google.com/maps/search/Burr+Ridge,+IL+60527",
     },
 ]
 
@@ -414,19 +414,16 @@ def show_landmark_dialog(landmark):
 
     st.markdown("<div class='divider-line'></div>", unsafe_allow_html=True)
 
-    # Location card (replaces map)
-    lat, lng = landmark['coordinates']
-    maps_url = f"https://www.google.com/maps?q={lat},{lng}"
+    # Location card
     st.markdown(f"""
         <div class="location-card">
             <div class="location-card-title">📍 Location</div>
             <div class="location-card-address">{landmark['location_text'].replace(chr(10), '<br>')}</div>
-            <div class="location-card-coords">🌐 {lat:.4f}°N, {abs(lng):.4f}°W</div>
         </div>
     """, unsafe_allow_html=True)
 
     st.markdown("<br>", unsafe_allow_html=True)
-    st.link_button("🗺️ Open in Google Maps", maps_url, use_container_width=True)
+    st.link_button("🗺️ Open in Google Maps", landmark['maps_url'], use_container_width=True)
 
 # ─── Suggest Story Dialog ─────────────────────────────────────────────────────
 @st.dialog("Suggest a Landmark Story", width="large")
